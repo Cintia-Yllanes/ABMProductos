@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.table-lila-header th {
+    background-color: #7700ff; 
+    color: white; 
+}

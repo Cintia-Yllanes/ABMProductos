@@ -4,68 +4,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h3>Productos</h3>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaIngreso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaIngreso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-               <img src="@item.Imagen" alt="Imagen del Producto" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Idproducto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Idproducto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Idproducto">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">ABMProductos</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">
+                        <a asp-action="Create" class="btn btn-lg btn-success">Crear Nuevo Producto</a>
+                    </p>
+                    <div class="table-responsive bg-pink">
+                        <table class="table table-bordered table-hover">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Categoría</th>
+                                    <th>Fecha de Ingreso</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Imagen</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Categoria)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FechaIngreso)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+                                        <td><img src="@item.Imagen" alt="Imagen del Producto" class="img-thumbnail" style="max-width: 100px; max-height: 100px;"></td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Idproducto" class="btn btn-sm btn-info">Editar</a>
+                                            <a asp-action="Details" asp-route-id="@item.Idproducto" class="btn btn-sm btn-warning">Detalles</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Idproducto" class="btn btn-sm btn-danger">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
